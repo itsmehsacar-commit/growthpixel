@@ -1,0 +1,32 @@
+"use client";
+
+import { motion } from "framer-motion";
+
+interface SectionHeadingProps {
+  title: string;
+  subtitle?: string;
+  centred?: boolean;
+}
+
+export function SectionHeading({
+  title,
+  subtitle,
+  centred = true,
+}: SectionHeadingProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className={`mb-12 ${centred ? "text-center" : ""}`}
+    >
+      <h2 className="text-3xl font-bold text-secondary md:text-4xl">{title}</h2>
+      {subtitle && (
+        <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+          {subtitle}
+        </p>
+      )}
+    </motion.div>
+  );
+}
